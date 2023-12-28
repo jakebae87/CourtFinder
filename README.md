@@ -11,3 +11,7 @@ https://spring.io/tools/ &nbsp;&nbsp;&nbsp; WINDOW x86 64 version download
 JSP와 Javascript 사용 환경을 위해 Eclipse Marketplace에서 Eclipse Enterprise Java and Web Developer Tools 3.31 설치<br>
 이로 인하여 jsp파일과 javascript 파일을 사용 가능
 
+<p>[MYSQL 설정]</p>
+create user 'court'@'%' identified by '12345!';
+GRANT ALL PRIVILEGES ON *.* TO 'court'@'%';
+CREATE DATABASE court CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
