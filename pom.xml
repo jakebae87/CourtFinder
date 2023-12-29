@@ -64,18 +64,12 @@
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>-->
 
-		<!-- JSP 템플릿 엔진 -->
+		<!-- Thymeleaf -->
 		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
-		<!-- JSTL -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
