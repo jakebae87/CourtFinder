@@ -1,6 +1,12 @@
 server:
   port: 8080
-
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -12,4 +18,13 @@ spring:
     cache: false #서버 재시작할 필요없이 새로고침으로 변동사항 반영
     prefix: file:src/main/resources/templates/
     suffix: .html
-
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #entity에서 설정한 변수명이 createDate를 DB Table에 변수명 그대로 저장하게 하는 기능
+    show-sql: true
+    properties:
+      hibernate.format_sql: true #console에서 SQL 깔끔하게 확인 가능
