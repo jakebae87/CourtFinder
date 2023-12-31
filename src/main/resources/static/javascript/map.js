@@ -59,6 +59,11 @@ function getSavedLocations(map) {
 					infowindow.close();
 				});
 
+				kakao.maps.event.addListener(marker, 'click', function() {
+					// 클릭한 마커의 정보를 모달에 표시
+					displayModal(court);
+				});
+
 				return marker;
 			});
 
@@ -76,4 +81,15 @@ function getSavedLocations(map) {
 		.catch(error => {
 			alert("에러 발생: " + error.message);
 		});
+}
+
+function displayModal(court) {
+	var modalContent = document.getElementById('modalContent');
+	axios.get('/detail/' + court.id)
+		.then(response => {
+			modalContent.innerHTML = response.data;
+			var modal = new bootstrap.Modal(document.getElementById('myModal'));
+			modal.show();
+		})
+		.catch(error => console.error('서버 통신 중 오류 발생:', error));
 }
