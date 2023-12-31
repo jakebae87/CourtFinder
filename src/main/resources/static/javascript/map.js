@@ -1,5 +1,6 @@
 var geo_latitude = null;
 var geo_longitude = null;
+var infowindow = new kakao.maps.InfoWindow(); // 인포윈도우를 함수 외부에서 선언
 
 window.onload = function() {
 	var locationPermission = sessionStorage.getItem('locationPermission');
@@ -45,9 +46,20 @@ function getSavedLocations(map) {
 			const courtData = response.data;
 
 			const markers = courtData.map(court => {
-				return new kakao.maps.Marker({
+				const marker = new kakao.maps.Marker({
 					position: new kakao.maps.LatLng(court.latitude, court.longitude)
 				});
+
+				kakao.maps.event.addListener(marker, 'mouseover', function() {
+					infowindow.setContent(court.content);
+					infowindow.open(map, marker);
+				});
+
+				kakao.maps.event.addListener(marker, 'mouseout', function() {
+					infowindow.close();
+				});
+
+				return marker;
 			});
 
 			markers.forEach(marker => {
@@ -65,4 +77,3 @@ function getSavedLocations(map) {
 			alert("에러 발생: " + error.message);
 		});
 }
-
