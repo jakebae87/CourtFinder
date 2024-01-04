@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Modal Content</title>
+<meta charset="UTF-8">
+<title>Modal Content</title>
 </head>
 <body>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">모달 제목</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>코트 정보</p>
-            <div th:utext="${id}"></div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        </div>
-    </div>
+	<div class="modal-content">
+		<div class="modal-header" th:if="${map.isPresent()}">
+			<h5 class="modal-title">
+				<span th:utext="'코트 재질 ' + 
+		            (${map.get().courtMaterial.toString() == 'DIRT'} ? '<span style=\'color: #8B6331; font-weight: bold;\'>흙</span>' :
+		            (${map.get().courtMaterial.toString() == 'ASPHALT'} ? '<span style=\'color: #969696; font-weight: bold;\'>아스팔트</span>' :
+		            (${map.get().courtMaterial.toString() == 'PVC'} ? '<span style=\'color: #40A940; font-weight: bold;\'>우레탄</span>' :
+		            (${map.get().courtMaterial.toString() == 'PPTYLE'} ? '<span style=\'color: #1478FF; font-weight: bold;\'>플라스틱</span>' : '기타'))))">
+				</span> &nbsp;&nbsp;&nbsp;&nbsp;
+				<span th:text="' 골대 갯수 ' + ${map.get().rimCount}"></span>
+			</h5>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<div class="modal-body">
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+			<p>1</p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-danger" data-dismiss="modal">신고</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+		</div>
+	</div>
 </body>
 </html>

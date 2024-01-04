@@ -25,27 +25,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Map {
+public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
+	@Column(nullable = false)
 	private String content;
 
-	private double latitude;
+    @JoinColumn(name = "userId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
 
-	private double longitude;
-
-	@Column(nullable = false)
-	private int rimCount;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "userId")
-	private User user; // FK 설정
-
-	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private Court courtMaterial;
+    @JoinColumn(name = "mapId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Map map;
 
 	@CreationTimestamp
 	private Timestamp createDate;
