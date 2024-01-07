@@ -23,11 +23,12 @@
 		</div>
 
 		<div class="modal-body">
-			<p>1</p>
-			<p>1</p>
-			<p>1</p>
-			<p>1</p>
-			<p>1</p>
+			<table>
+				<tr th:each="data:${comment}">
+					<td th:text="${data.content}"></td>
+					<td th:text="${data.user}"></td>
+				</tr>
+			</table>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-danger" data-dismiss="modal">신고</button>

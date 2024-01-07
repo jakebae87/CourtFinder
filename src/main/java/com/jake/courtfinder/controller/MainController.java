@@ -22,6 +22,8 @@ public class MainController {
 	@GetMapping("/detail/{id}")
 	public String getModalContent(Model model, @PathVariable int id) {
 		model.addAttribute("map",mapService.getMap(id));
+		model.addAttribute("comment",mapService.getCommentsById(id));
+		System.out.println(model.getAttribute("comment"));
 		return "modal";
 	}
 }
