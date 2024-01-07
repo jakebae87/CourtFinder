@@ -2,7 +2,6 @@ package com.jake.courtfinder.model;
 
 import java.sql.Timestamp;
 
-import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
@@ -48,5 +47,6 @@ public class Map {
 	private Court courtMaterial;
 
 	@CreationTimestamp
+	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Timestamp createDate;
 }

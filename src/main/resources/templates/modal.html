@@ -8,13 +8,14 @@
 	<div class="modal-content">
 		<div class="modal-header" th:if="${map.isPresent()}">
 			<h5 class="modal-title">
-				<span th:utext="'코트 재질 ' + 
+				<span
+					th:utext="'코트 재질 ' + 
 		            (${map.get().courtMaterial.toString() == 'DIRT'} ? '<span style=\'color: #8B6331; font-weight: bold;\'>흙</span>' :
 		            (${map.get().courtMaterial.toString() == 'ASPHALT'} ? '<span style=\'color: #969696; font-weight: bold;\'>아스팔트</span>' :
 		            (${map.get().courtMaterial.toString() == 'PVC'} ? '<span style=\'color: #40A940; font-weight: bold;\'>우레탄</span>' :
 		            (${map.get().courtMaterial.toString() == 'PPTYLE'} ? '<span style=\'color: #1478FF; font-weight: bold;\'>플라스틱</span>' : '기타'))))">
-				</span> &nbsp;&nbsp;&nbsp;&nbsp;
-				<span th:text="' 골대 갯수 ' + ${map.get().rimCount}"></span>
+				</span> &nbsp;&nbsp;&nbsp;&nbsp; <span
+					th:text="' 골대 갯수 ' + ${map.get().rimCount}"></span>
 			</h5>
 			<button type="button" class="close" data-dismiss="modal"
 				aria-label="Close">
@@ -23,10 +24,19 @@
 		</div>
 
 		<div class="modal-body">
-			<table>
-				<tr th:each="data:${comment}">
+			<table style="font-size: 12px; width: 100%;">
+				<colgroup>
+					<col style="width: 75%;" />
+					<col style="width: 20%;" />
+					<col style="width: 5%;" />
+				</colgroup>
+				<tr th:each="data:${comment}" style="height: 50px;">
 					<td th:text="${data.content}"></td>
-					<td th:text="${data.user}"></td>
+					<td th:text="${#dates.format(data.createDate, 'yyyy-MM-dd')}"></td>
+					<td><button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button></td>
 				</tr>
 			</table>
 		</div>
